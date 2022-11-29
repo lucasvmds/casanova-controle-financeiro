@@ -1,0 +1,25 @@
+#flash-messages-container {
+    position: fixed;
+    right: 1em;
+    top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    & > p {
+        margin: 0;
+        padding: 1em;
+        background-color: #FFF;
+        border-left: .5em solid;
+        box-shadow: 0 .2em 2em rgba(0, 0, 0, .05);
+        cursor: pointer;
+        &.success {
+            border-left-color: green;
+        }
+        &.warning {
+            border-left-color: goldenrod;
+        }
+        &.error {
+            border-left-color: red;
+        }
+    }
+}

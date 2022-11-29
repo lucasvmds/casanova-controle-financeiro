@@ -1,0 +1,15 @@
+#app {
+    & > aside {
+        grid-area: 1/2/1/2;
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        & > a, & > button, & > span {
+            padding: .7em 1em;
+            background-color: #FFF;
+            border-radius: 2em;
+            box-shadow: 0 .2em 2em rgba(0, 0, 0, .05);
+        }
+    }
+}
