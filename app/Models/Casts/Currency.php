@@ -37,4 +37,15 @@ class Currency implements CastsAttributes
     {
         return $value;
     }
+
+    public static function format(float $value): string
+    {
+        return (new self)
+                    ->get(
+                        '',
+                        '',
+                        $value,
+                        []
+                    );
+    }
 }

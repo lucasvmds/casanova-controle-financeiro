@@ -1,16 +1,28 @@
 .transaction-type {
     display: inline-block;
-    padding: .3em;
-    width: 6em;
     text-align: center;
     color: #FFF;
     border-radius: 1em;
-    border: solid .2em;
     font-size: .9em;
+    font-weight: 700;
+    @media screen {
+        padding: .3em;
+        width: 6em;
+    }
     &.out {
-        color: #F00;
+        @media print {
+            color: #F00;
+        }
+        @media screen {
+            background-color: #F00;
+        }
     }
     &.in {
-        color: #008000;
+        @media print {
+            color: #008000;
+        }
+        @media screen {
+            background-color: #008000;
+        }
     }
 }

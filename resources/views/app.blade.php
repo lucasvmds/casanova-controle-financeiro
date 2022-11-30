@@ -7,7 +7,7 @@
         <script src="https://kit.fontawesome.com/c3e219dc62.js" crossorigin="anonymous" defer></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
         @vite('resources/js/app.js')
         @inertiaHead
     </head>

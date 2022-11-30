@@ -66,9 +66,9 @@ class Transaction extends Model
         $total_out = SumGroupedAmount::sum(TransactionType::OUT, $transactions);
         return [
             'transactions' => $transactions,
-            'total_in' => SumGroupedAmount::formatCurrency($total_in),
-            'total_out' => SumGroupedAmount::formatCurrency($total_out),
-            'total_profit' => SumGroupedAmount::formatCurrency(
+            'total_in' => Currency::format($total_in),
+            'total_out' => Currency::format($total_out),
+            'total_profit' => Currency::format(
                 $total_in - $total_out
             ),
         ];

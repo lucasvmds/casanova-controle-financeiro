@@ -14,7 +14,7 @@ class TransactionFactory extends Factory
         return [
             'description' => ucfirst(fake()->text(40)),
             'type' => fake()->randomElement(TransactionType::cases()),
-            'amount' => fake()->numberBetween(0, 999999),
+            'amount' => fake()->numberBetween(0, 9999),
         ];
     }
 }

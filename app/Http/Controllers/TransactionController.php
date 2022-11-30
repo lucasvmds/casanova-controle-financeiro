@@ -15,7 +15,6 @@ use App\Models\Transaction;
 use App\Support\Facades\FlashMessages;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 use Inertia\Inertia;
 use Inertia\Response;
 

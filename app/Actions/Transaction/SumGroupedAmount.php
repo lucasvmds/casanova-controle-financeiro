@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Actions\Transaction;
 
 use App\Enums\TransactionType;
-use App\Models\Casts\Currency;
 use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -20,17 +19,6 @@ class SumGroupedAmount
                             $total;
             },
             0
-        );
-    }
-
-    public static function formatCurrency(float $total): string
-    {
-        $currency_cast = new Currency;
-        return $currency_cast->get(
-            '',
-            '',
-            $total,
-            []
         );
     }
 }

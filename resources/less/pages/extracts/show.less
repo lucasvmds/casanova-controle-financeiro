@@ -1,0 +1,44 @@
+#extracts-show-page {
+    & > h1 {
+        margin-bottom: 0;
+    }
+    & > p {
+        margin-top: 0;
+        margin-bottom: 2em;
+    }
+    & > dl {
+        & > dt {
+            display: inline-block;
+        }
+        & > dd {
+            display: inline-block;
+            margin: auto 3em auto .5em;
+        }
+    }
+}
+
+@media print {
+    body {
+        margin: 1em;
+        background-color: #FFF;
+        & > #app {
+            display: block;
+            padding: 0;
+            width: auto;
+            height: auto;
+
+            & > aside, & > header, #flash-messages-container {
+                display: none;
+            }
+
+            & > main {
+                padding: 1em;
+                width: 21cm;
+                font-size: .7em;
+                background-color: #FFF;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+    }
+}

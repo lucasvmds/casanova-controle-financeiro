@@ -14,6 +14,7 @@
     <nav>
         <Link href="/">Dashboard</Link>
         <Link href="/transactions">Transações</Link>
+        <Link href="/extracts">Extratos</Link>
         <Link href="/session/edit">Acesso</Link>
         <button type="button" on:click={logoutUser}>
             Sair
