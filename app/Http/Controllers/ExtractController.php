@@ -14,7 +14,7 @@ class ExtractController extends Controller
     public function index(): Response
     {
         return Inertia::render('Extract/Index', [
-            'segments' => Segment::getAll(),
+            'segments' => Segment::getAll(true),
         ]);
     }
 

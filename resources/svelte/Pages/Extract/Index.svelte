@@ -30,6 +30,7 @@
 </script>
 
 <main>
+    <h1>Extratos</h1>
     <form id="form-extract" on:submit|preventDefault={listTransactions}>
         <Input type="date" label="Data inicial" bind:value={DATA.initial_date} error={errors.initial_date} required />
         <Input type="date" label="Data final" bind:value={DATA.final_date} error={errors.final_date} required />

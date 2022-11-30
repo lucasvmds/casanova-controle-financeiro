@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enums\TransactionType;
 use App\Models\Casts\Currency;
+use App\Traits\CanDeleteRestoreModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Segment extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, CanDeleteRestoreModel;
 
     protected $fillable = [
         'id',
@@ -85,5 +86,12 @@ class Segment extends Model
                                 0
                             );
         return Currency::format($balance);
+    }
+
+    public static function createAndReturnId(array $data): int
+    {
+        $segment = self::query()
+                        ->create($data);
+        return $segment->id;
     }
 }

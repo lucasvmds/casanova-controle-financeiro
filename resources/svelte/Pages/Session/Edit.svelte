@@ -38,6 +38,7 @@
 </script>
 
 <main>
+    <h1>Dados de acesso</h1>
     <form id="form" on:submit|preventDefault={updateUser}>
         <Input type="email" label="E-Mail" bind:value={DATA.email} error={errors.email} required />
         <Input type="password" label="Senha atual" bind:value={DATA.current_password} error={errors.current_password} />

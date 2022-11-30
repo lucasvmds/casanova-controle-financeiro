@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExtractController;
+use App\Http\Controllers\SegmentController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,11 @@ Route::middleware(['auth', 'auth.session'])->group(function() {
     Route::get('transactions/{group_id}', [TransactionController::class, 'show'])->name('transactions.show');
 
     Route::get('extracts', [ExtractController::class, 'index'])->name('extracts.index');
-    Route::get('extracts/{segment}', [ExtractController::class, 'show'])->name('extracts.show');
+    Route::get('extracts/{segment}', [ExtractController::class, 'show'])->withTrashed()->name('extracts.show');
+
+    Route::resource('segments', SegmentController::class)->except([
+        'show',
+        'destroy',
+    ]);
+    Route::delete('segments/{segment}', [SegmentController::class, 'destroy'])->withTrashed()->name('segments.destroy');
 });

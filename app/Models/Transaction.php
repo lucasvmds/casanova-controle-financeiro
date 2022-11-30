@@ -45,7 +45,7 @@ class Transaction extends Model
     protected function segmentName(): Attribute
     {
         return new Attribute(
-            get: fn(): string => $this->segment()->first(['name'])->name,
+            get: fn(): string => $this->segment()->withTrashed()->first(['name'])->name,
         );
     }
 
