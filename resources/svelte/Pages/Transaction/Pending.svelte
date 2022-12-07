@@ -1,13 +1,14 @@
 <script lang="ts">
     import { makeDate } from "../../../ts/support";
-    import { Transaction } from "../../../ts/types";
+    import { Transaction, Segment } from "../../../ts/types";
     import { Link } from "@inertiajs/inertia-svelte";
     import Type from "./Type.svelte";
     import { Inertia } from "@inertiajs/inertia";
     import PaginateComponent, { Paginate } from "../../Components/Paginate.svelte";
     import { SearchButton, SearchForm } from "./Search/index.svelte";
     export let
-        transactions: Paginate<Transaction>;
+        transactions: Paginate<Transaction>,
+        segments: Segment[];
 
     function releaseTransaction(id: number): void
     {
@@ -19,7 +20,7 @@
 
 <main>
     <h1>Transações Pendentes</h1>
-    <SearchForm />
+    <SearchForm {segments} />
     <table class="center">
         <thead>
             <tr>
@@ -65,6 +66,9 @@
 </main>
 
 <aside>
+    <Link href="/transactions/create">
+        Adicionar transação
+    </Link>
     <Link href="/transactions">
         Transações
     </Link>

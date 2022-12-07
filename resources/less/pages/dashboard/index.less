@@ -1,0 +1,30 @@
+#dashboard-page {
+    & > article {
+        &:not(:last-child) {
+            margin-bottom: 3em;
+        }
+        & > h2 {
+            margin-bottom: 0;
+        }
+        &#balances {
+            & > dl {
+                display: flex;
+                gap: 3em;
+                & > div {
+                    & > dt {
+                        color: var(--accent-color);
+                        font-weight: 700;
+                    }
+                    & > dd {
+                        margin-left: 1em;
+                    }
+                }
+            }
+        }
+    }
+    table {
+        & th {
+            font-size: 1em;
+        }
+    }
+}

@@ -6,6 +6,7 @@ use App\Actions\Transaction\SumGroupedAmount;
 use App\Enums\TransactionType;
 use App\Models\Casts\Currency;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -54,6 +55,15 @@ class Transaction extends Model
         return static::query()
                     ->where('pending', true)
                     ->count(['id']);
+    }
+
+    public static function getPending(int $limit = 10): Collection
+    {
+        return self::query()
+                    ->where('pending', true)
+                    ->orderBy('valid_at')
+                    ->take($limit)
+                    ->get();
     }
 
     public static function getAllByGroupId(string $group_id): array

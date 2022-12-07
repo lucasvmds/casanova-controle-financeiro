@@ -10,14 +10,16 @@
     import { Link } from "@inertiajs/inertia-svelte";
     import PaginateComponent, { Paginate } from "../../Components/Paginate.svelte";
     import { SearchButton, SearchForm } from "./Search/index.svelte";
+    import { Segment } from "../../../ts/types";
     export let
         groups: Paginate<Group>,
-        pending_count: number;
+        pending_count: number,
+        segments: Segment[];
 </script>
 
 <main>
     <h1>Transações Agrupadas</h1>
-    <SearchForm />
+    <SearchForm {segments} />
     <table class="center">
         <thead>
             <tr>
@@ -52,6 +54,9 @@
 </main>
 
 <aside>
+    <Link href="/transactions/create">
+        Adicionar transação
+    </Link>
     <Link href="/transactions">
         Transações
     </Link>

@@ -26,6 +26,7 @@ class TransactionController extends Controller
             return Inertia::render('Transaction/Index', [
                 'transactions' => $transactions,
                 'pending_count' => Transaction::countPending(),
+                'segments' => Segment::getAll(true),
             ]);
         } else {
             return redirect()->route('transactions.index',['items' => $request->query('items')]);
@@ -37,6 +38,7 @@ class TransactionController extends Controller
         if ($transactions = PaginateTransactionsRecords::run($request, TransactionPaginateType::PENDING)) {
             return Inertia::render('Transaction/Pending', [
                 'transactions' => $transactions,
+                'segments' => Segment::getAll(true),
             ]);
         } else {
             return redirect()->route('transactions.pending',['items' => $request->query('items')]);
@@ -48,6 +50,7 @@ class TransactionController extends Controller
             return Inertia::render('Transaction/Grouped', [
                 'groups' => $transactions,
                 'pending_count' => Transaction::countPending(),
+                'segments' => Segment::getAll(true),
             ]);
         } else {
             return redirect()->route('transactions.grouped',['items' => $request->query('items')]);

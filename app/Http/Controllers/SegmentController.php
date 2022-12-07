@@ -16,7 +16,7 @@ class SegmentController extends Controller
     public function index(): Response
     {
         return Inertia::render('Segment/Index', [
-            'segments' => Segment::getAll(true),
+            'segments' => Segment::getAll(true, true),
         ]);
     }
 

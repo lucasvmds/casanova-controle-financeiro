@@ -19,6 +19,11 @@ export type Segment = {
     active: boolean;
 }
 
+export type Balance = {
+    segment_name: string;
+    amount: string;
+}
+
 export type FlashMessageLevel = 'success' | 'warning' | 'error';
 
 export type FlashMessage = {

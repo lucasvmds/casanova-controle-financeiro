@@ -33,6 +33,10 @@ class PaginateTransactionsRecords
                                         });
                                 }
                             )
+                            ->when(
+                                $request->input('segment_id'),
+                                fn(Builder $builder, ?int $segment_id): Builder => $builder->where('segment_id', $segment_id),
+                            )
                             ->paginate((int) ($request->query('items') ?? 20));
         
         if ($transactions->isEmpty() && $request->query('items') && $request->query('page')) {

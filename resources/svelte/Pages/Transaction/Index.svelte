@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Transaction } from "../../../ts/types";
+    import { Transaction, Segment } from "../../../ts/types";
     import { Link } from "@inertiajs/inertia-svelte";
     import PaginateComponent, { Paginate } from "../../Components/Paginate.svelte";
     import Type from "./Type.svelte";
@@ -7,12 +7,13 @@
     import { SearchButton, SearchForm } from "./Search/index.svelte";
     export let
         transactions: Paginate<Transaction>,
-        pending_count: number;
+        pending_count: number,
+        segments: Segment[];
 </script>
 
 <main>
     <h1>Transações</h1>
-    <SearchForm />
+    <SearchForm {segments} />
     <table class="center">
         <thead>
             <tr>

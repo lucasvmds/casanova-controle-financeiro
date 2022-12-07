@@ -27,6 +27,8 @@ Route::middleware(['auth', 'auth.session'])->group(function() {
     Route::delete('session', [SessionController::class, 'destroy'])->name('session.destroy');
 
     Route::get('/', DashboardController::class)->name('dashboard.index');
+    Route::get('dashboard/balances', [DashboardController::class, 'balances'])->name('dashboard.balances');
+    Route::get('dashboard/pending', [DashboardController::class, 'pending'])->name('dashboard.pending');
 
     Route::get('transactions/pending', [TransactionController::class, 'pending'])->name('transactions.pending');
     Route::get('transactions/grouped', [TransactionController::class, 'grouped'])->name('transactions.grouped');

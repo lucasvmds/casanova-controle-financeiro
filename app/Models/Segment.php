@@ -7,6 +7,8 @@ namespace App\Models;
 use App\Enums\TransactionType;
 use App\Models\Casts\Currency;
 use App\Traits\CanDeleteRestoreModel;
+use DateTime;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,11 +34,15 @@ class Segment extends Model
         return $this->hasMany(Transaction::class);
     }
 
-    public static function getAll(bool $with_trashed = false): Collection
+    public static function getAll(bool $with_trashed = false, bool $omit_default = false): Collection
     {
         $builder = $with_trashed ? static::withTrashed() : static::query();
         return $builder
                     ->orderBy('name')
+                    ->when(
+                        $omit_default,
+                        fn(Builder $builder): Builder => $builder->where('id', '!=', 1),
+                    )
                     ->get([
                         'id',
                         'name',
@@ -67,7 +73,7 @@ class Segment extends Model
                     ->get();
     }
 
-    public function getBalanceAtDate(string $date): string
+    public function getBalanceAtDate(string|DateTime $date): string
     {
         $builder = $this->id === 1 ? Transaction::query() : $this->transactions();
         $transactions = $builder
@@ -93,5 +99,18 @@ class Segment extends Model
         $segment = self::query()
                         ->create($data);
         return $segment->id;
+    }
+
+    public static function getBalances(): array
+    {
+        $balances = [];
+        /** @var self */
+        foreach (self::getAll(true) as $segment) {
+            $balances[] = [
+                'segment_name' => $segment->name,
+                'amount' => $segment->getBalanceAtDate(now()),
+            ];
+        }
+        return $balances;
     }
 }
